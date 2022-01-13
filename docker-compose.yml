@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  appd-db-agent:
+    image: appd-db-agent
+    network_mode: host
+    build: appd-db-agent
+    command: /opt/appd-dbagent/start-dbagent -Ddbagent.name="north-west-blue"
+    environment:
+     - PROJECT_DIRECTORY="/appd-db-agent"
