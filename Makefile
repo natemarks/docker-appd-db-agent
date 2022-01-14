@@ -59,7 +59,7 @@ endif
 
 build: git-status ## push images to registry and upload python package to artifacts
 	( \
-       docker build --tag $(CONTROLLER)-appd-db-agent:$(VERSION) appd-db-agent; \
+       docker build --tag $(CONTROLLER)-appd-db-agent:$(AGENT_VERSION) appd-db-agent; \
     )
 
 docker-login:
@@ -67,8 +67,8 @@ docker-login:
 
 upload_to_ecr: docker-login ## push images to registry and upload python package to artifacts
 	( \
-       docker tag $(CONTROLLER)-appd-db-agent:$(VERSION) $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(VERSION); \
-       docker push $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(VERSION); \
+       docker tag $(CONTROLLER)-appd-db-agent:$(AGENT_VERSION) $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(AGENT_VERSION); \
+       docker push $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(AGENT_VERSION); \
     )
 
 
