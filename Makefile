@@ -74,6 +74,11 @@ docker-stop:  ##  run wiht docker run
 docker-login:
 	$$(aws ecr get-login --no-include-email  --region us-east-1)
 
+docker-pull: docker-login  ## pull the image from ecr
+	( \
+       docker pull $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(AGENT_VERSION); \
+    )
+
 upload_to_ecr: docker-login ## push images to registry and upload python package to artifacts
 	( \
        docker tag $(CONTROLLER)-appd-db-agent:$(AGENT_VERSION) $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(AGENT_VERSION); \
