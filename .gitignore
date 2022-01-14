@@ -2,5 +2,5 @@
 .vscode/
 *.iml
 .env
-db-agent*.zip
+*db-agent*.zip
 .venv/

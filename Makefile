@@ -57,4 +57,20 @@ else
 	$(info Current Branch: $(CURRENT_BRANCH), main: $(MAIN_BRANCH))
 endif
 
+build: git-status ## push images to registry and upload python package to artifacts
+	( \
+       docker build --tag $(CONTROLLER)-appd-db-agent:$(VERSION) appd-db-agent; \
+    )
+
+docker-login:
+	$$(aws ecr get-login --no-include-email  --region us-east-1)
+
+upload_release_images: docker-login ## push images to registry and upload python package to artifacts
+	( \
+       AWS_ACCOUNT_ID := $(shell aws sts get-caller-identity --output text | awk '{print $1}'); \
+       docker tag $(CONTROLLER)-appd-db-agent:$(VERSION) $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(VERSION); \
+       docker push $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(VERSION); \
+    )
+
+
 .PHONY: static shellcheck test
