@@ -77,6 +77,7 @@ docker-login:
 docker-pull: docker-login  ## pull the image from ecr
 	( \
        docker pull $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(AGENT_VERSION); \
+       docker tag $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(AGENT_VERSION) $(CONTROLLER)-appd-db-agent:$(AGENT_VERSION); \
     )
 
 upload_to_ecr: docker-login ## push images to registry and upload python package to artifacts
