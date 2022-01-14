@@ -27,7 +27,10 @@ make CONTROLLER-my-controller build
 ```
 
 ### Push the image to AWS ECR
-This assumes you ahve the registry named 'appd-db-agent' in your AWS account and region
+This assumes you have an ECR registry named for each controller in your account and region
+ECR regestry name examples:
+prod-appd-db-agent
+non-prod-appd-db-agent
 
 
 
