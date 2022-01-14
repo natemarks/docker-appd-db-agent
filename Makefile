@@ -62,6 +62,15 @@ build: git-status ## push images to registry and upload python package to artifa
        docker build --tag $(CONTROLLER)-appd-db-agent:$(AGENT_VERSION) appd-db-agent; \
     )
 
+docker-run:  ##  run wiht docker run
+	docker run -d --rm \
+	--name=$(CONTROLLER)-appd-db-agent \
+	 -e DB_AGENT_NAME='$(DB_AGENT_NAME)' \
+	 $(CONTROLLER)-appd-db-agent:$(AGENT_VERSION); \
+
+docker-stop:  ##  run wiht docker run
+	docker stop $(CONTROLLER)-appd-db-agent
+
 docker-login:
 	$$(aws ecr get-login --no-include-email  --region us-east-1)
 
