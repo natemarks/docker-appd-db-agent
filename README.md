@@ -1,7 +1,5 @@
 # appd-db-agent
-This project makes it easier to create a docker image from an appd-db-agent zip file. When correctly downloaded from a specific controller console, the zip file contains credentials, so it can't be included in the project. it must be downloaded separately.
-
-It can be run from any host with the AWS credentials required to upload ECR images.
+This project makes it easier to create a docker image from an appd-db-agent zip file. When correctly downloaded from a specific controller console, the zip file contains credentials, so it can't be included in the project. it must be downloaded separately. It can be run from any host with the AWS credentials required to upload ECR images.
 
 Once all of the pre-requisites are satisfied, I can build my docker image locally with the command below. 
 
