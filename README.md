@@ -7,12 +7,12 @@ Once all of the pre-requisites are satisfied, I can build my docker image locall
 
 ```shell
 # build the image: my-controller-appd-db-agent:21.12.4.2589
-make CONTROLLER-my-controller AGENT_VERSION=21.12.4.2589 build
+make CONTROLLER=my-controller AGENT_VERSION=21.12.4.2589 build
 ```
 
 Assuming I have an AWS ECR registry named 'my-controller-appd-db-agent', this would push the local image to the ECR registry
 ```shell
-make CONTROLLER-my-controller AGENT_VERSION=21.12.4.2589 upload_to_ecr
+make CONTROLLER=my-controller AGENT_VERSION=21.12.4.2589 upload_to_ecr
 
 ```
 ## Prepre your ECR registries
