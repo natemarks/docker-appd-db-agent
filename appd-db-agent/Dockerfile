@@ -13,4 +13,4 @@ RUN mkdir -p /opt/appd-dbagent
 RUN unzip /db-agent.zip -d /opt/appd-dbagent
 
 
-ENTRYPOINT ["/opt/appd-dbagent/start-dbagent",  "-Ddbagent.name=${DB_AGENT_NAME:-north-west-blue}"]
+ENTRYPOINT ["java", "-Xmx3g", "-Ddbagent.name=${DB_AGENT_NAME:-north-west-blue}", "-jar", "/opt/appd-dbagent/db-agent.jar"]
