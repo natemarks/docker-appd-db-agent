@@ -55,3 +55,8 @@ make CONTROLLER=imprivata-nonprod AGENT_VERSION=21.12.4.2589 DB_AGENT_NAME=hybri
 ```shell
 make CONTROLLER=imprivata-nonprod docker-stop
 ```
+
+### docker shell
+```shell
+make CONTROLLER=imprivata-nonprod docker-shell
+```
