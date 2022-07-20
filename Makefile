@@ -64,6 +64,7 @@ build: git-status ## push images to registry and upload python package to artifa
 
 docker-run:  ##  run wiht docker run
 	docker run -d --rm --memory=3g \
+	-v "$$(pwd)/appd_db_agent_logs:/opt/appd-dbagent/logs" \
 	--name=$(CONTROLLER)-appd-db-agent \
 	-e DB_AGENT_NAME="$(DB_AGENT_NAME)" \
 	$(CONTROLLER)-appd-db-agent:$(AGENT_VERSION); \

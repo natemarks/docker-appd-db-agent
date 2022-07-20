@@ -44,3 +44,14 @@ This assumes you have an ECR registry named for each controller in your account 
 ECR registry name examples:
 prod-appd-db-agent
 non-prod-appd-db-agent
+
+
+### start the container
+```shell
+make CONTROLLER=imprivata-nonprod AGENT_VERSION=21.12.4.2589 DB_AGENT_NAME=hybrid-staging docker-run
+```
+
+### stop the container
+```shell
+make CONTROLLER=imprivata-nonprod docker-stop
+```
