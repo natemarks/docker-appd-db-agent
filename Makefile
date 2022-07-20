@@ -87,5 +87,8 @@ upload_to_ecr: docker-login ## push images to registry and upload python package
        docker push $(AWS_ACCOUNT_ID).dkr.ecr.us-east-1.amazonaws.com/$(CONTROLLER)-appd-db-agent:$(AGENT_VERSION); \
     )
 
+docker-shell:  ##  start a shell in container
+       docker exec -it  $(CONTROLLER)-appd-db-agent /bin/bash
+
 
 .PHONY: static shellcheck test
