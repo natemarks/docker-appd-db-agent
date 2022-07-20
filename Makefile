@@ -88,6 +88,6 @@ upload_to_ecr: docker-login ## push images to registry and upload python package
     )
 
 docker-shell:  ##  start a shell in container
-       docker exec -it  $(CONTROLLER)-appd-db-agent /bin/bash
+	docker exec -it  $(CONTROLLER)-appd-db-agent /bin/bash
 
 .PHONY: static shellcheck test
