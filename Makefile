@@ -8,7 +8,10 @@ THIS_FILE := $(lastword $(MAKEFILE_LIST))
 VERSION := 0.0.13
 #  use the long commit id
 COMMIT := $(shell git rev-parse HEAD)
-AWS_ACCOUNT_ID := $(shell aws sts get-caller-identity --output text | awk '{print $$1}')
+SHELL := /bin/bash
+AWS_REGION = us-east-1
+AWS_ACCOUNT_ID = 468716396736
+ECR_URI = $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com
 
 
 help: ## Show this help.
@@ -73,7 +76,7 @@ docker-stop:  ##  run wiht docker run
 	docker stop $(CONTROLLER)-appd-db-agent
 
 docker-login:
-	$$(aws ecr get-login --no-include-email  --region us-east-1)
+	aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin $(ECR_URI)
 
 docker-pull: docker-login  ## pull the image from ecr
 	( \
